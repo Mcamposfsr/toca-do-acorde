@@ -18,9 +18,10 @@ export default {
       },
       colors:{
         "azulClaro":"#78B3CE",
-        "azulCeu":"#C9E6F0",
+        "azulCeu":"#dbecf5",
         "branco":"#FBF8EF",
-        "laranja":"#F96E2A"
+        "laranja":"#F96E2A",
+        "texto":"#5c5b5b"
       }
 
     },
