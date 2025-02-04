@@ -4,12 +4,19 @@ export default {
   theme: {
     extend: {
       boxShadow:{
-        "header":"10px 0px 5px 3px #C9E6F0",
+        "header":"10px 0px 10px 3px #78B3CE",
         "button":
-          "5px 5px 10px 0px #F96E2A,"+
-          "-5px -5px 10px 0px #F96E2A,"+
-          "5px -5px 10px 0px #F96E2A,"+
-          "-5px 5px 10px 0px #F96E2A"
+          "5px 5px 10px 0px #F96E2A"+
+          "-5px -5px 10px 0px #F96E2A"+
+          "5px -5px 10px 0px #F96E2A"+
+          "-5px 5px 10px 0px #F96E2A",
+        "modal":"6px 6px 10px 3px #525151",
+        "input":
+        "1px 1px 0px 4px #F96E2A,"+
+        "-1px -1px 0px 4px #F96E2A,"+
+        "1px -1px 0px 4px #F96E2A,"+
+        "-1px 1px 0px 4px #F96E2A"
+        
 },
       fontFamily:{
         "nautigal":["The Nautigal","serif"],

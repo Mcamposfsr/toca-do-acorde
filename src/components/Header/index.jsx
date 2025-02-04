@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom"
 
 const Header = ({infoLinks}) =>{
     return(
-        <header className="flex w-screen h-[12vh] justify-between items-center px-[35px] shadow-header fixed top-0 z-50 bg-[#ffffff]">
+        <header className="flex w-screen h-[12vh] justify-between items-center px-[35px] shadow-header fixed top-0 z-30 bg-[#ffffff]">
             <Logo/>
             <div className="flex justify-between items-center gap-[30px]">
                 {infoLinks.map((info)=>
