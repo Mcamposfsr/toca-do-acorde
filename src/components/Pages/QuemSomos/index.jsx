@@ -27,7 +27,7 @@ const QuemSomos = () =>{
 
 
                 </div>
-                <Logo className="mt-[50px]"/>
+                <Logo className="mt-[50px] my-[.6em]"/>
 
             </section>
     )

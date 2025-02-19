@@ -1,10 +1,12 @@
 import { Outlet } from "react-router-dom"
 
 
+
 const PaginaPrincipal = () => {
+
     return (
         <main>
-        <Outlet/>
+            <Outlet/>
         </main>
     )
 }
