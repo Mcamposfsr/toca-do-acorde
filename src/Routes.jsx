@@ -11,74 +11,75 @@ import mainImg  from "/pessoa-tocando-violao.jpg"
 // BIBLIOTECAS
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { useState } from "react"
+import Acordes from "./components/Pages/Acordes"
 
 function App() {
+  // CONTROLE DE LOGIN
+  const [isLogged, setIsLogged] = useState(localStorage.getItem("login")?true:false)
 
-// DADOS BTN HEADER
+
+  // DADOS BTN HEADER
   const infosLinks = [
     {txt:"Quem somos",url:"/about"},
-    {txt:"Acordes",url:"/cadastro"},
+    {txt:"Acordes",url:"/acordes"},
   ]
 
-  // CONTROLE MODALFormulario
+  // CONTROLE MODAL
   const [openModal, setOpenModal] = useState("")
   const controleModal = (valor) => setOpenModal(valor)
 
-  // DADOS MODALFormulario
-const dadosModal = {
-  cadastro:{ 
-    textoModal:"Crie uma conta e junta-se a nossa comunidade!",
-    textoBtnSubmit:"Fazer cadastro",
-    dadosInputs:[
-    {
-      type:"text",
-      label:"Nome",
-      id:"Nome",
-    },
-    {
-      type:"text",
-      label:"Email",
-      id:"Email",
-    },
-    {
-      type:"password",
-      label:"Senha",
-      id:"Senha",
-    },
-    {
-      type:"password",
-      label:"Repita a senha",
-      id:"confSenha",
-    },
-    {
-      type:"date",
-      label:"Data de nascimento",
-      id:"Data",
+  // DADOS MODAL
+  const dadosModal = {
+    cadastro:{ 
+      textoModal:"Crie uma conta e junta-se a nossa comunidade!",
+      textoBtnSubmit:"Fazer cadastro",
+      dadosInputs:[
+      {
+        type:"text",
+        label:"Nome",
+        id:"nome",
+      },
+      {
+        type:"text",
+        label:"Email",
+        id:"email",
+      },
+      {
+        type:"password",
+        label:"Senha",
+        id:"senha",
+      },
+      {
+        type:"password",
+        label:"Repita a senha",
+        id:"confSenha",
+      },
+    ]},
+    login:{
+      textoModal:"Seja bem vindo!",
+      textoBtnSubmit:"Fazer Login",
+      dadosInputs:[
+      {
+        type:"text",
+        label:"Email",
+        id:"email",
+      },
+      {
+        type:"password",
+        label:"Senha",
+        id:"senha",
+      }
+    ]}
+  }
 
-    }
-  ]},
-  login:{
-    textoModal:"Seja bem vindo!",
-    textoBtnSubmit:"Fazer Login",
-    dadosInputs:[
-    {
-      type:"text",
-      label:"Email",
-      id:"Email",
-    },
-    {
-      type:"password",
-      label:"Senha",
-      id:"Senha",
-    }
-  ]}
-}
 
   return (
     <BrowserRouter>
-      <Header 
+      <Header
         infoLinks={infosLinks} 
         controleModal={setOpenModal}
+        setIsLogged={setIsLogged} 
+        isLogged={isLogged}
       />
 
       <Routes>
@@ -87,10 +88,15 @@ const dadosModal = {
           <Route index element={<Inicio
             imgBanner={mainImg}
             txtBotao={"Começe agora!"}
-            acaoBotao={()=>{alert("Olá")}}/>}
+           />}
           />
           
           <Route path="/about" element={<QuemSomos/>}/>
+          <Route path="/acordes" element={<Acordes
+          controleModal={setOpenModal}
+          isLogged={isLogged}
+          
+          />}/>
         </Route>
         
       </Routes>
@@ -98,6 +104,8 @@ const dadosModal = {
             estadoModal={openModal}
             controleModal={controleModal}
             dados={dadosModal}
+            setIsLogged={setIsLogged} 
+            isLogged={isLogged}
             />
 
   

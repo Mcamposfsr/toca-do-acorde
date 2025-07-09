@@ -5,7 +5,7 @@ import Titulo from "../../Titulo"
 
 const QuemSomos = () =>{
     return (
-            <section className="flex flex-col gap-[50px] items-center justify-center bg-azulCeu max-w-screen h-full mt-[12vh] box-border">
+            <section className="flex flex-col gap-[50px] items-center justify-center bg-azulCeu max-w-screen h-full box-border">
                 <div className="flex flex-col gap-[2em] mt-[3em] mx-[4em] font-light ">
                     <h1 className="font-nautigal text-[6em] text-laranja font-black">Sobre Nós:</h1>
                     

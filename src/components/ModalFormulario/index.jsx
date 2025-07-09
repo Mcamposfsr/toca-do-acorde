@@ -3,10 +3,14 @@ import { GoX } from "react-icons/go";
 import Formulario from "../Formulario";
 import { useEffect,useRef } from "react";
 
- const ModalFormulario = ({estadoModal,controleModal,dados}) =>{
+
+
+ const ModalFormulario = ({estadoModal,controleModal,dados,setIsLogged,isLogged}) =>{
+
     const modal = useRef(null)
+
  
-// FECHAMENTO DO MODAL AO CLICAR FORA
+// CONTROLE DE FECHAMENTO DO MODAL 
     useEffect(()=>{
         if(estadoModal){
 
@@ -16,39 +20,45 @@ import { useEffect,useRef } from "react";
 
                 }
             };
-            window.addEventListener("click",handleClickOutside)
-
-            return () =>{
-                window.removeEventListener("click",handleClickOutside)
-            }
-        }
-        
-    },[controleModal,estadoModal])
-// FECHAMENTO DO MODAL AO CLICAR ESC
-    useEffect(()=>{
-
-        if(estadoModal){
 
             const handleEscPress = (event) => {
                 if(event.key == "Escape"){
                     controleModal("")
                 }
             }
+
             window.addEventListener("keydown",handleEscPress)
+            window.addEventListener("click",handleClickOutside)
 
             return () =>{
+                window.removeEventListener("click",handleClickOutside)
                 window.removeEventListener("keydown",handleEscPress)
+
             }
         }
-
         
-    
     },[controleModal,estadoModal])
+
+    // REMOVER ROLAGEM AO ABRIR O MODAL
+    useEffect(()=>{
+
+        if(estadoModal){
+            document.body.classList.add("overflow-hidden")
+        }else{
+        document.body.classList.remove("overflow-hidden")
+        }
+
+
+
+        return ()=>{
+            document.body.classList.remove("overflow-hidden")
+        }
+    },[estadoModal])
 
     if(!estadoModal) return null
 
     return(     
-        <div ref={modal} className={`absolute w-screen h-screen bg-black/50 top-0 z-50  flex justify-center items-center`}>
+        <div ref={modal} className={`fixed w-screen h-screen bg-black/50 top-0 z-50  flex justify-center items-center`}>
             <div  className="flex bg-white w-[50%] min-h-[55%]  rounded-[20px] shadow-modal overflow-hidden relative">
                 <GoX className="absolute text-center text-[2.5em] text-azulClaro right-[2%] top-[2%] cursor-pointer" onClick={() =>controleModal("")}/>
                 {/* Esquerda */}
@@ -61,7 +71,8 @@ import { useEffect,useRef } from "react";
                     dadosForm={dados}
                     controleModal={controleModal}
                     estadoModal={estadoModal}
-
+                    setIsLogged={setIsLogged} 
+                    isLogged={isLogged}
                 />
             </div>
         </div>
